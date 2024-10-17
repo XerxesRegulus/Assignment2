@@ -1,0 +1,22 @@
+---
+# source: https://medium.com/codenx/containerizing-net-core-applications-with-docker-and-orchestrating-with-kubernetes-e67ce1715ec7
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: assignment2-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: assignment2
+  template:
+    metadata:
+      labels:
+        app: assignment2
+    spec:
+      containers:
+      - name: assignment2
+        image: xerxesregulus/assignment2:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
